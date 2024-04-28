@@ -8,8 +8,10 @@
 ## Requirements
 - OpenAI API Key: Obtain from [OpenAI/api-keys](https://platform.openai.com/api-keys).
 - Python 3.8+
+- For transcribing non-wav files – like mp3 – you'll need ffmpeg or libav. Installation instructions here: [Getting ffmpeg set up](https://github.com/jiaaro/pydub/blob/master/README.markdown#getting-ffmpeg-set-up).
 
 ## Setup
+Install ffmpeg if you need to transcribe non-wav files: [Getting ffmpeg set up](https://github.com/jiaaro/pydub/blob/master/README.markdown#getting-ffmpeg-set-up).
 ```bash
 # Clone the repository
 git clone https://github.com/atsyplikhin/transcribe.git
@@ -32,11 +34,22 @@ OPENAI_API_KEY="insert_your_key_here" python transcribe.py "[audio file path]" "
 - You can optionally add speaker names and descriptions to put the outputs through an LLM for diarization attempt as the next step.
 - The script will produce a `.txt` file in the directory of the audio file, ready to be pasted into ChatGPT or Claude.
 
+Note: to avoid using OPENAI_API_KEY every time you run the script, you can export it:
+```bash
+export OPENAI_API_KEY="insert_your_key_here"
+
+# Now you can run transcribe.py without OPENAI_API_KEY in the command line:
+python transcribe.py "[audio file path]" "[optional: speaker names and descriptions - for diarization later]"
+```
+
+
 ### Transcribe Sample Script
 ```bash
 # Download an example audio clip:
-curl -O -J -L "https://www.dropbox.com/scl/fi/6sn0jyeiy4dwmr3g8nzds/Example_Kahneman_Decision_Making.m4a?rlkey=httibe0rmsqro98smuz120nla&dl=0"
+curl -O -J -L "https://www.dropbox.com/scl/fi/l7m6vavgbx143dbx4tqls/Example_To_Transcribe.m4a?rlkey=v4nd007gai7l7t6snqlnm65i2&dl=0"
 
 #Transcribe audio
-OPENAI_API_KEY="insert_your_key_here" python transcribe.py Example_Kahneman_Decision_Making.m4a "DANIEL KAHNEMAN, Behavioral Economist and Nobel Laureate and ALEC ELLISON, Founder, Outvest Capital, former Vice Chairman, Jefferies"
+OPENAI_API_KEY="insert_your_key_here" python transcribe.py "Example_To_Transcribe.m4a" "Tom Kelley (interviewer) and Ms. Smith (interviewee)"
 ```
+
+Audio source is [here](https://youtu.be/yBtMwyQFXwA?si=7tZtPokSDR7JkBGu&t=177).
