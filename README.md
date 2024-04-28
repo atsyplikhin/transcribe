@@ -43,7 +43,7 @@ python transcribe.py "[audio file path]" "[optional: speaker names and descripti
 ```
 
 
-### Transcribe Sample Script
+### Example: Transcribe Sample Audio File
 ```bash
 # Download an example audio clip:
 curl -O -J -L "https://www.dropbox.com/scl/fi/l7m6vavgbx143dbx4tqls/Example_To_Transcribe.m4a?rlkey=v4nd007gai7l7t6snqlnm65i2&dl=0"
