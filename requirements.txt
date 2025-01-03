@@ -1,2 +1,3 @@
 openai
 pydub
+audioop-lts # for Python 3.13+ as per https://github.com/jiaaro/pydub/issues/725#issuecomment-2439291764

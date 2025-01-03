@@ -4,21 +4,26 @@ from pathlib import Path
 from pydub import AudioSegment
 from openai import OpenAI
 
-# Check if the file path is provided
+# Check if the required file path is provided
 if len(sys.argv) < 2:
-    print("Usage: python script.py <path to audio file>")
+    print("Usage: python script.py <path to audio file> [<language>] [<speaker names>]")
     sys.exit(1)
 
-speaker_names = f"The speakers are {sys.argv[2]}." if len(sys.argv) >= 3 else ""
-
-# Command line argument for the file path
+# Extract optional arguments
 input_file_path = sys.argv[1]
+language = sys.argv[2] if len(sys.argv) >= 3 else "en"
+speaker_names = f"The speakers are {sys.argv[3]}." if len(sys.argv) >= 4 else ""
+
+# Verify input file path
 input_path = Path(input_file_path)
+if not input_path.is_file():
+    print(f"Error: The file {input_file_path} does not exist.")
+    sys.exit(1)
 
 # Initialize OpenAI client
 client = OpenAI()
 
-# Read the audio file from the provided path
+# Read the audio file
 audio = AudioSegment.from_file(input_file_path)
 
 chunk_length_ms = 10 * 60 * 1000  # 10 minutes
@@ -34,14 +39,16 @@ tmp_fname = "$$tmp_audio_for_transcription$$.mp3"
 with transcription_file_path.open("w") as out_file:
     while True:
         portion = audio[current_offset:(current_offset + chunk_length_ms)]
-        if len(portion) == 0: break
+        if len(portion) == 0:
+            break
 
         portion.export(tmp_fname, format="mp3")
 
         with open(tmp_fname, "rb") as audio_file:
             transcription = client.audio.transcriptions.create(
-                model="whisper-1", 
-                file=audio_file
+                model="whisper-1",
+                file=audio_file,
+                language=language
             )
             line = f"Transcription portion {i + 1}\n{transcription.text}\n\n"
             out_file.write(line)
