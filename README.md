@@ -56,11 +56,11 @@ OPENAI_API_KEY="insert_your_key_here" python transcribe.py "Example_To_Transcrib
 Audio source is [here](https://youtu.be/yBtMwyQFXwA?si=7tZtPokSDR7JkBGu&t=177).
 
 
-### Sample commands to set up from scratch on MacOS X 15.2 with Python 3.13
+### Sample commands to set up from scratch on MacOS X 15.2 with Python 3.12
 ```bash
 git clone https://github.com/atsyplikhin/transcribe.git
 cd transcribe
-python3.13 -m venv venv
+python3.12 -m venv venv
 source venv/bin/activate
 pip install --upgrade pip
 # Install requirements
