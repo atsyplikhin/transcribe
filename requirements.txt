@@ -2,3 +2,4 @@ openai
 pydub
 # audioop-lts # for Python 3.13+ as per https://github.com/jiaaro/pydub/issues/725#issuecomment-2439291764
 git+https://github.com/openai/whisper.git # for local processing
+git+https://github.com/mustafaaljadery/lightning-whisper-mlx.git@45a07563c73ed71287428bb618984dc816f930b0 # For MLX
