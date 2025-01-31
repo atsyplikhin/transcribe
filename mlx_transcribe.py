@@ -6,9 +6,9 @@ from lightning_whisper_mlx import LightningWhisperMLX
 
 # ---------------------------------------------------------------------------
 # USAGE:
-# python mlx_whisper_transcribe.py <path to audio file> [<language>] [<model>] [<quantization>] [<speaker names>]
+# python mlx_transcribe.py <path to audio file> [<language>] [<model>] [<quantization>] [<speaker names>]
 # Example:
-#   python mlx_whisper_transcribe.py my_recording.mp3 en "distil-medium.en" "None" "Alice and Bob"
+#   python mlx_transcribe.py my_recording.mp3 en "distil-medium.en" "None" "Alice and Bob"
 # ---------------------------------------------------------------------------
 
 def transcribe_audio(model, file_path, language="en"):
@@ -18,7 +18,7 @@ def transcribe_audio(model, file_path, language="en"):
 
 def main():
     if len(sys.argv) < 2:
-        print("Usage: python mlx_whisper_transcribe.py <path to audio file> [<language>] [<model>] [<quantization>] [<speaker names>]")
+        print("Usage: python mlx_transcribe.py <path to audio file> [<language>] [<model>] [<quantization>] [<speaker names>]")
         sys.exit(1)
 
     # Extract arguments

@@ -7,14 +7,14 @@ import whisper
 
 # ---------------------------------------------------------------------------
 # USAGE:
-# python local_whisper_transcribe.py <path to audio file> [<language>] [<speaker names>]
+# python local_transcribe.py <path to audio file> [<language>] [<speaker names>]
 # Example:
-#   python local_whisper_transcribe.py my_recording.mp3 en "Alice and Bob"
+#   python local_transcribe.py my_recording.mp3 en "Alice and Bob"
 # ---------------------------------------------------------------------------
 
 def main():
     if len(sys.argv) < 2:
-        print("Usage: python local_whisper_transcribe.py <path to audio file> [<language>] [<speaker names>]")
+        print("Usage: python local_transcribe.py <path to audio file> [<language>] [<speaker names>]")
         sys.exit(1)
 
     # Extract arguments
