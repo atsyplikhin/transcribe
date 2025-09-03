@@ -77,3 +77,28 @@ brew install ffmpeg
 curl -O -J -L "https://www.dropbox.com/scl/fi/l7m6vavgbx143dbx4tqls/Example_To_Transcribe.m4a?rlkey=v4nd007gai7l7t6snqlnm65i2&dl=0"
 OPENAI_API_KEY="insert_your_key_here" python transcribe.py "Example_To_Transcribe.m4a" "en" "Tom Kelley (interviewer) and Ms. Smith (interviewee)"
 ```
+
+# Audio Compression Script: compress_voice_audio.py
+
+Example commands (your folder)
+
+Use your folder path exactly as given:
+
+Standard voice compression (recommended):
+
+python3 compress_voice_audio.py "/Users/aletsy01/Local Documents/Recordings/"
+
+
+Overwrite filenames instead of writing _compressed.m4a:
+
+python3 compress_voice_audio.py "/Users/aletsy01/Local Documents/Recordings/" --overwrite
+
+
+Tighter compression for speech (smaller files, a bit less fidelity):
+
+python3 compress_voice_audio.py "/Users/aletsy01/Local Documents/Recordings/" --bitrate 24k --samplerate 16000
+
+
+Dry run (see what will happen, no files written):
+
+python3 compress_voice_audio.py "/Users/aletsy01/Local Documents/Recordings/" --dry-run
