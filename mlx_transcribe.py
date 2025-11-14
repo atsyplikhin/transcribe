@@ -67,22 +67,22 @@ def main():
             i += 1
             current_offset += chunk_length_ms - overlap_ms
 
-        # Append post-processing instructions
-        prompt = f"""---
-You are a helpful assistant. Your task is to correct any spelling discrepancies in 
-the transcribed text above, combine portions, and split with new lines when speaker or topic appear to change. 
-Remove filler words such as okay, right, you know, kind of, like, really, well, and others. 
-Do not remove phrases otherwise, keep the whole meaning. 
-Only add necessary punctuation such as periods, commas, and capitalization, and use only the context provided. 
-{speaker_names}
-The format must be as follows:
-**Speaker 1 Name**: Hello.
+#         # Append post-processing instructions
+#         prompt = f"""---
+# You are a helpful assistant. Your task is to correct any spelling discrepancies in 
+# the transcribed text above, combine portions, and split with new lines when speaker or topic appear to change. 
+# Remove filler words such as okay, right, you know, kind of, like, really, well, and others. 
+# Do not remove phrases otherwise, keep the whole meaning. 
+# Only add necessary punctuation such as periods, commas, and capitalization, and use only the context provided. 
+# {speaker_names}
+# The format must be as follows:
+# **Speaker 1 Name**: Hello.
 
-**Speaker 2 Name**: Hello.
+# **Speaker 2 Name**: Hello.
 
-**Speaker 1 Name**: How are you?
-"""
-        out_file.write(prompt)
+# **Speaker 1 Name**: How are you?
+# """
+#         out_file.write(prompt)
 
     # Clean up
     os.remove(tmp_fname)
