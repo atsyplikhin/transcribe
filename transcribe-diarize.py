@@ -73,7 +73,8 @@ if not input_path.is_file():
     sys.exit(1)
 
 # Initialize OpenAI client
-client = OpenAI()
+base_url = os.getenv("OPENAI_BASE_URL")
+client = OpenAI(base_url=base_url)
 
 transcription_file_path = input_path.parent / f"{input_path.stem}_transcript.txt"
 
